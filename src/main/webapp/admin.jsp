@@ -21,5 +21,5 @@ alert("Login successfully");
 <br/>
 <input type="submit" value="Submit" class="btn btn-success" onclick=admin()>
 <input type="button" value="Cancel" class="btn btn-danger"  onclick="window.location.href = 'index.jsp';"><br>
-</body>
+</form></body>
 </html>

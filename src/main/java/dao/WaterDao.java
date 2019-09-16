@@ -15,7 +15,7 @@ import util.ConnectionUtil;
 public class WaterDao implements WaterDaoImp {
 	Connection con = ConnectionUtil.getConnection();
 	 PreparedStatement pst = null;
-
+Details water = new Details();
 	
 
 
@@ -32,11 +32,12 @@ public class WaterDao implements WaterDaoImp {
 		
 	}
 
-	public void admin1(Details water) {
+	
+	 public void admin1(int cans) {
 		try {
-			String sql = "update availability_List set Availability_List=?";
+			String sql = "update availability_List set Availability_List=? , date =current_timestamp()";
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setDouble(1, water.getAvailability_List());
+			pst.setInt(1,cans);
 		  pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -45,7 +46,7 @@ public class WaterDao implements WaterDaoImp {
 
 	
 	
-	public void quantity(Details water) {
+	 public void quantity(Details water) {
 		try {
 			String sql = "insert into quantity_List(Quantity_List) values(?)";
 			PreparedStatement pst = con.prepareStatement(sql);
@@ -110,14 +111,14 @@ public class WaterDao implements WaterDaoImp {
 	    List<Details> list = new ArrayList<Details>();
 	    try {
 	        con = ConnectionUtil.getConnection();
-	        String sql = "select * from stock";
+	        String sql = "select * from availability_List";
 	        pst = con.prepareStatement(sql);
 	        ResultSet rs = pst.executeQuery();
 	        while(rs.next()) {
 	            
 	        	Details stock = new Details();
-	            stock.setAvailability_List(rs.getInt("cans_avail"));
-	            Date date = rs.getDate("date");
+	            stock.setAvailability_List(rs.getInt("Availability_List"));
+	            Date date = rs.getDate("Date");
 	            stock.setDate(date.toLocalDate());
 	            list.add(stock);
 	        }

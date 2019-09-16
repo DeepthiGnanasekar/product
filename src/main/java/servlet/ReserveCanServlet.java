@@ -14,8 +14,7 @@ import service.UserService;
 public class ReserveCanServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   String reserveCan = request.getParameter("reserveCans");
-   int canReserve = Integer.parseInt(reserveCan);
+   int canReserve = Integer.parseInt(request.getParameter("reserveCans"));
 	 PrintWriter out = response.getWriter();
      out.println("Enter Number Of Cans to be reserved :" + canReserve);
      Details orderDetail = new Details();

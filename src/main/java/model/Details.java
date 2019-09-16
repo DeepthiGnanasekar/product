@@ -13,7 +13,7 @@ public class Details {
 	private String status;
 
 	
-	public double getAvailability_List() {
+	public int getAvailability_List() {
 		return availability_List;
 	}
 

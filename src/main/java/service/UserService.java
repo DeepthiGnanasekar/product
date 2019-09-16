@@ -17,8 +17,16 @@ import validator.UserValidator;
 public class UserService {
 UserDaoImp userdao = new UserDao();
 	WaterDaoImp waterdao = new WaterDao();
+	 UserValidator validator = new UserValidator();
+	 UserDetails details = new UserDetails();
+Details user = new Details();
      public void register(UserDetails details) {
     	 	try {
+    	 		try {
+					validator.registerValidator(details);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			userdao.register(details);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -80,14 +88,24 @@ UserDaoImp userdao = new UserDao();
 		
   }
      public List<Details> stockView() throws Exception {
-         WaterDaoImp dao = new WaterDao();
          List<Details> list = null;
          try {
-             list = dao.viewStock();
+             list = waterdao.viewStock();
          } catch (DBException e) {
              e.printStackTrace();
          }
          System.out.println();
          return list;
      }
+    
+     
+	public void setCan(int cans) {
+		try {
+			waterdao.admin1(cans);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (DBException e) {
+			e.printStackTrace();
+		}
+	}
 }

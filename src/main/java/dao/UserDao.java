@@ -11,8 +11,7 @@ import exception.DBException;
 
 public class UserDao implements UserDaoImp {
 	Connection con = ConnectionUtil.getConnection();
-	 PreparedStatement pst = null;
-	
+	 PreparedStatement pst = null;	
 	
 	public void register(UserDetails user) throws  SQLException, DBException {
 		

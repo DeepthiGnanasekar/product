@@ -8,7 +8,7 @@ import model.Details;
 public interface WaterDaoImp {
 	void admin(Details water)throws  SQLException, DBException;
 
-	void admin1(Details water)throws  SQLException, DBException;
+	 void admin1(int cans)throws  SQLException, DBException;
 
 	void quantity(Details water)throws  SQLException, DBException;
 
@@ -21,5 +21,7 @@ public interface WaterDaoImp {
 	void reserveu(Details water)throws  SQLException, DBException;
 
 	List<Details> viewStock() throws Exception;
+
+	
 
 }

@@ -6,17 +6,17 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
-function View()
+function viewStock()
 {
-   var url = "http://localhost:8080/WaterCaneWebProject/ViewStockServlet";
+   var url = "http://localhost:8080/waterCanWebServices/ViewStockServlet";
    $.getJSON(url, function(response){
-       console.log(response);
+       //console.log(response);
        var data = response;
        var content="";
        document.getElementById("stock").innerHTML="";
        for(let stock of data){
            content += "<tr>";
-           content += "<td>" + stock.cans_avail + "</td>";
+           content += "<td>" + stock.availability_List + "</td>";
            content += "<td>" + stock.date.day+"-"+stock.date.month+"-"+stock.date.year + "</td>";
            content += "</tr>";
        }
@@ -39,7 +39,7 @@ function View()
        </table>
    </div>
    <script>
-View();
+   viewStock();
 </script>
 </body>
 </html>
