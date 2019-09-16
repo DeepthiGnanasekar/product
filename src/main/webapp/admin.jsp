@@ -8,17 +8,18 @@
 function admin()
 {
 alert("Login successfully");
-window.location.href = "adminSetUp.jsp";
 }
 </script>
-<h1>Welcome to WaterCan Plant Services</h1>
+<h1>Welcome to Revature WaterCan Plant Services</h1>
 <h2> Admin_Login </h2>
 <h2>Login </h2>
-Name:
-<input type="text">
-Password:
-<input type="password" > <br>
-<input type="button" value="Submit" class="btn btn-success"  onclick="admin()">
+<form action="AdminServlet">
+<label>Name:</label>
+<input type="text" name="name" id="name" placeholder="Enter name" required autofocus />
+<label>Password:</label>
+<input type="text" name="password" id="password" placeholder="Enter password" required autofocus />
+<br/>
+<input type="submit" value="Submit" class="btn btn-success" onclick=admin()>
 <input type="button" value="Cancel" class="btn btn-danger"  onclick="window.location.href = 'index.jsp';"><br>
 </body>
 </html>
