@@ -18,14 +18,16 @@ public class UserDao implements UserDaoImp {
 		try {
 			
 			String sql = "insert into user_Info(Name,Mobile_Number,Set_Password) values (?,?,?)";
+			Long mobile=Long.parseLong(user.getMobileNumber());
 			 pst = con.prepareStatement(sql);
 			pst.setString(1, user.getName());
-			pst.setInt(2, user.getMobileNumber());
+			pst.setLong(2, mobile);
 			pst.setString(3, user.getSetPassword());
 			int rows = pst.executeUpdate();
 			System.out.println("no of rows inserted:" + rows);
 
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new DBException("This account is already existing!!!...Please enter a valid details...");
 		}
 		finally
@@ -34,21 +36,20 @@ public class UserDao implements UserDaoImp {
 		}
 	}
 
-	public  UserDetails login(String name, String setPassword) throws  SQLException, DBException {
+	public  UserDetails login(String phone_number, String setPassword) throws  SQLException, DBException {
 		
 		UserDetails details = null;
 		try {
 			
-			String sql = "select ID, Name, Mobile_Number,Set_Password from user_Info where Name = ? and Set_Password = ?";
+			String sql = "select * from user_Info where Mobile_Number = ? and Set_Password = ?";
 			 pst = con.prepareStatement(sql);
-			pst.setString(1, name);
+			pst.setString(1, phone_number);
 			pst.setString(2, setPassword);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				details = new UserDetails();
 				details = toRow(rs);
 			}
-
 		} catch (Exception e) {
 			throw new DBException("Invalid Credentials...!!!",e);
 		}
@@ -135,9 +136,7 @@ public  AdminDetails adminLogin(AdminDetails admin) throws  SQLException, DBExce
 	}
 
 	private AdminDetails toRow3(ResultSet rs) throws SQLException {
-		int id = rs.getInt("ID");
 		String name = rs.getString("Name");
-		String mob_no = rs.getString("Mobile_Number");
 		String setPassword = rs.getString("Set_Password");
 		AdminDetails info = new AdminDetails();
 		
@@ -149,12 +148,12 @@ public  AdminDetails adminLogin(AdminDetails admin) throws  SQLException, DBExce
 	private UserDetails toRow(ResultSet rs1) throws SQLException {
 		int id = rs1.getInt("ID");
 		String name = rs1.getString("Name");
-		int mob_no = rs1.getInt("Mobile_Number");
+		String phone_number = rs1.getString("Mobile_Number");
 		String setPassword = rs1.getString("Set_Password");
 		UserDetails user = new UserDetails();
 		user.setID(id);
 		user.setName(name);
-		user.setMobileNumber(mob_no);
+		user.setMobileNumber(phone_number);
 		user.setSetPassword(setPassword);
 		return user;
 	}

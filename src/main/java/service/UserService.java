@@ -20,13 +20,12 @@ UserDaoImp userdao = new UserDao();
 	 UserValidator validator = new UserValidator();
 	 UserDetails details = new UserDetails();
 Details user = new Details();
-     public void register(UserDetails details) {
+     public void register(UserDetails details) throws Exception {
     	 	try {
-    	 		try {
-					validator.registerValidator(details);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		   validator.registerValidator(details);
+		    validator.validateName(details.getName());
+		    validator.validateNumber(details.getMobileNumber());
+		    validator.validCheck(details.getName(),details.getSetPassword());
 			userdao.register(details);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -34,10 +33,10 @@ Details user = new Details();
 			e.printStackTrace();
 		}
      }
-     public UserDetails login(String name,String setPassword) {
+     public UserDetails login(String phone_number,String setPassword) {
     	 UserDetails details = null;
     	 try {
-    		 details = userdao.login(name,setPassword);
+    		 details = userdao.login(phone_number,setPassword);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (DBException e) {

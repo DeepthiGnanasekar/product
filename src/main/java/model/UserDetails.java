@@ -3,7 +3,7 @@ package model;
 public class UserDetails {
 	private int id;
 	private String name;
-	private int mobileNumber;
+	private String mobileNumber;
 	private String setPassword;
 
 	@Override
@@ -28,11 +28,11 @@ public class UserDetails {
 	}
 
 	
-	public int getMobileNumber() {
+	public String getMobileNumber() {
 		return mobileNumber;
 	}
-	public void setMobileNumber(int mobile) {
-		this.mobileNumber = mobile;
+	public void setMobileNumber(String phone_number) {
+		this.mobileNumber = phone_number;
 		
 	}
 	public String getSetPassword() {
