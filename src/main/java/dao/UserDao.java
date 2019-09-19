@@ -3,8 +3,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import model.AdminDetails;
 import model.UserDetails;
 import util.ConnectionUtil;
 import exception.DBException;
@@ -60,54 +58,9 @@ public class UserDao implements UserDaoImp {
 		return details;
 	}
 
-	public int viewStock()  { 
-        int stock = 0;
-        try {
-            con = ConnectionUtil.getConnection();
-            String sql = "select Availability_List from availability_List";
-            pst = con.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                stock = rs.getInt("Availability_List");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        
-        } finally {
-        	try {
-				pst.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-        }
-        return stock;
-    }
 	
-public  AdminDetails adminLogin(AdminDetails admin) throws  SQLException, DBException {
-		
-		try {
-			
-			String sql = "select Name, Password from admin where Name = ? and Password = ?";
-			 pst = con.prepareStatement(sql);
-			pst.setString(1, admin.getName());
-			pst.setString(2, admin.getPassword());
-			ResultSet rs = pst.executeQuery();
-			if (rs.next()) {
-				
-				 admin.setName(rs.getString("Name"));
-				 admin.setPassword(rs.getString("Password"));
-				
-			}
+	
 
-		} catch (Exception e) {
-			throw new DBException("Invalid Credentials...!!!",e);
-		}
-		finally
-		{
-		pst.close();	
-		}
-		return admin;
-	}
 	
 	public UserDetails findByID(int id) throws SQLException, DBException {
 		UserDetails userid = null;
@@ -135,15 +88,7 @@ public  AdminDetails adminLogin(AdminDetails admin) throws  SQLException, DBExce
 		return userid;
 	}
 
-	private AdminDetails toRow3(ResultSet rs) throws SQLException {
-		String name = rs.getString("Name");
-		String setPassword = rs.getString("Set_Password");
-		AdminDetails info = new AdminDetails();
-		
-		info.setName(name);
-		info.setPassword(setPassword);
-		return info;
-	}
+	
 
 	private UserDetails toRow(ResultSet rs1) throws SQLException {
 		int id = rs1.getInt("ID");

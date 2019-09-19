@@ -4,22 +4,15 @@ import java.time.LocalDate;
 
 public class Details {
 	
-	private int availability_List;
+	
 	private LocalDate date;
-	private static int quantyList;
-	private static int reservedList;
+	private  int quantyList;
+	private int reservedList;
 	private int reservedOrder;
 	private int quanty;
 	private String status;
-
+    private long number;
 	
-	public int getAvailability_List() {
-		return availability_List;
-	}
-
-	public void setAvailability_List(int availability_List) {
-		this.availability_List = availability_List;
-	}
 
 	public LocalDate getDate() {
 		return date;
@@ -29,15 +22,15 @@ public class Details {
 		this.date = date;
 	}
 
-	public static int getQuantyList() {
+	public int getQuantyList() {
 		return quantyList;
 	}
 
-	public void setQuantyList(int quantyList) {
-		this.quantyList = quantyList;
+	public  int setQuantyList(int quantyList) {
+		return this.quantyList = quantyList;
 	}
 
-	public static double getReservedList() {
+	public  double getReservedList() {
 		return reservedList;
 	}
 
@@ -67,6 +60,14 @@ public class Details {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public long getNumber() {
+		return number;
+	}
+
+	public void setNumber(long number2) {
+		this.number = number2;
 	}
 
 }
