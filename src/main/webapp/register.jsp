@@ -47,20 +47,20 @@ function register()
 </script>
 
 </head>
-<body>
+<body style="text-align:center;">
 <jsp:include page="header.jsp"></jsp:include><br>
 
 <form onsubmit="register()">
-<h1>Welcome to Revature WaterCan Plant Services</h1>
-<h2>Registration Details</h2>
-<h2>Please Enter your Details</h2>
-<label>Name:</label>
+<h1 style="background-color:SkyBlue;">Welcome to Revature WaterCan Plant Services</h1>
+<h2  style="color:red;">Registration Details</h2>
+<h2 style="color:blue;">Please Enter your Details Below :</h2>
+<label style="font-family:verdana;">Name:</label>
 <input type="text" name="name" id="name" placeholder="Enter name" required autofocus />
 <br/>
-<label>Mobile Number:</label>
+<label style="font-family:verdana;">Mobile Number:</label>
 <input type="tel" name="mobile" id="mobile" placeholder="Enter phone_number" required  />
 <br/>
-<label>Set Password:</label>
+<label style="font-family:verdana;">Set Password:</label>
 <input type="password" name="password" id="password" placeholder="Enter Password"  required />
 <br/>
 <input type="submit" value="Submit" class="btn btn-success" onclick="register()">

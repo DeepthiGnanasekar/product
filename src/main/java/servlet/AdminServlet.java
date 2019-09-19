@@ -1,14 +1,12 @@
 package servlet;
-
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.AdminDetails;
-import service.UserService;
+import controller.AdminController;
+
 
 
 public class AdminServlet extends HttpServlet {
@@ -18,10 +16,14 @@ public class AdminServlet extends HttpServlet {
 		 String adminName = request.getParameter("name");
 	       String adminPassword = request.getParameter("password");
 	       PrintWriter out = response.getWriter();
-	      out.println("Name:" + adminName);
-	   out.println("Password:" + adminPassword );
-	      
-	       AdminDetails admin = new AdminDetails();
+	   
+	   AdminController admin=new AdminController();
+	   String json=admin.adminLogin(adminName,adminPassword);
+	   out.print(json);
+	   out.flush();
+	}
+}
+	       /*AdminDetails admin = new AdminDetails();
 	       admin.setName(adminName);
 	       admin.setPassword(adminPassword);
 	       try {
@@ -36,8 +38,8 @@ public class AdminServlet extends HttpServlet {
 	       }
 	       else {
 	          response.sendRedirect("index.jsp?message=Invalid Login Crendentials!!!");
-	       }
+	       }*/
 	
-	}
+	
 
-}
+

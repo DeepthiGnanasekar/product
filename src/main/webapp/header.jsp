@@ -55,6 +55,7 @@
       <li class="nav-item">
         <a class="nav-link" href="register.jsp">Register<span class="sr-only">(current)</span></a>
       </li>
+     
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>

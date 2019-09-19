@@ -17,8 +17,8 @@ public class RegisterServlet extends HttpServlet {
 		   String mobileNumber= request.getParameter("mobile");
 	       String setPassword = request.getParameter("password");
 	  
-	       UserController uc = new UserController();
-	    	String json =   uc.register(name,mobileNumber,setPassword);
+	       UserController user = new UserController();
+	    	String json =   user.register(name,mobileNumber,setPassword);
 	    	   PrintWriter out = response.getWriter();
 	    	   out.write(json);
 	    	   out.flush();
